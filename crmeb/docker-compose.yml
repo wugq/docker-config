@@ -28,9 +28,10 @@ services:
       - "6004:6379"
 
   app_server:
-    build: ./docker/php
+    build: ./docker/app_server
     depends_on:
       - db_server
       - redis_server
     volumes:
+      - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - .:/www
